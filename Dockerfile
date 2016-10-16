@@ -1,7 +1,8 @@
 FROM chuyskywalker/centos7-dumbinit-supervisor
 
 RUN yum install -y squid \
- && sed -i -e 's|#cache_dir.\+|cache_dir ufs /var/spool/squid 10240 16 256|g' /etc/squid/squid.conf \
+ && echo "maximum_object_size 128 MB" >> /etc/squid/squid.conf \
+ && echo "cache_dir ufs /var/spool/squid 10240 16 256" >> /etc/squid/squid.conf \
 \
  && yum install -y wget unzip \
  && wget https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip \
@@ -16,9 +17,7 @@ RUN yum install -y squid \
 
 COPY consul.ini         /config/supervisor/consul.ini
 COPY squid.ini          /config/supervisor/squid.ini
-
 COPY consul.json        /config/consul.json
-
 COPY squid-start.sh     /config/squid-start.sh
 
 # && echo 'proxy=http://cache.service.consul:3128' >> /etc/yum.conf \
