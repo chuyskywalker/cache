@@ -5,7 +5,6 @@ RUN yum install -y squid \
  && echo "cache_dir ufs /var/spool/squid 10240 16 256" >> /etc/squid/squid.conf \
  && yum clean all && rm -rf /var/cache/yum
 
-COPY consul.ini         /config/supervisor/consul.ini
 COPY squid.ini          /config/supervisor/squid.ini
-COPY consul.json        /config/consul.json
+COPY consul.json        /config/consul/service.json
 COPY squid-start.sh     /config/squid-start.sh
