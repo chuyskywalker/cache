@@ -1,0 +1,1 @@
+A squid container built to serve as a YUM cache for all my local dev instances.

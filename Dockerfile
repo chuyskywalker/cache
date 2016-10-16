@@ -19,7 +19,3 @@ COPY consul.ini         /config/supervisor/consul.ini
 COPY squid.ini          /config/supervisor/squid.ini
 COPY consul.json        /config/consul.json
 COPY squid-start.sh     /config/squid-start.sh
-
-# && echo 'proxy=http://cache.service.consul:3128' >> /etc/yum.conf \
-# && for i in /etc/yum.repos.d/*repo; do sed -i -e 's/^mirrorlist/#mirrorlist/g; s/^#baseurl/baseurl/g' $i; done \
-# && rm -f /etc/yum/pluginconf.d/fastestmirror.conf \
